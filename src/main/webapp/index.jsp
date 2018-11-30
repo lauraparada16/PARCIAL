@@ -19,8 +19,9 @@ body {
 <body>
     <div align="center" style="margin-top: 50px;">
         <form action="CrunchifyServlet">
-           CodEstudiante:  <input type="text" name="id" size="20px"> <br>
-           NomEstudiante:  <input type="text" name="nombre" size="20px"> <br><br>
+           CodEstudiante:  <input type="text" name="CodEstudiante" size="20px"> <br>
+           NomEstudiante:  <input type="text" name="NomEstudiante" size="20px"> <br><br>
+           CodEscuela:  <input type="text" name="CodEscuela" size="20px"> <br>
         <input type="submit" value="submit">
         </form>
      </div>
