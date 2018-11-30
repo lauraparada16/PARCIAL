@@ -18,21 +18,21 @@ import javax.servlet.RequestDispatcher;
 public class HelloCrunchify extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // reading the user input
-        String codEstudiante = request.getParameter("codEstudiante");
-        String nomEstudiante = request.getParameter("nomEstudiante");
-        String codEscuela = request.getParameter("codEscuela");
+        String codEstudiante = request.getParameter("CodEstudiante");
+        String nomEstudiante = request.getParameter("NomEstudiante");
+        String codEscuela = request.getParameter("CodEscuela");
         
         //Se debe incluir validaciones - Lo recuerda: Gestion de Excepciones.
         EstudianteDAO dao = new EstudianteDAO();
         
-        Estudiante estudiante = new Estudiante();
-        estudiante.setCodEstudiante(Integer.parseInt(codEstudiante));
-        estudiante.setNomEstudiante(nomEstudiante);
-        estudiante.setCodEscuela(Integer.parseInt(codEscuela));
+        Estudiante estudiantes = new Estudiante();
+        estudiantes.setCodEstudiante(Integer.parseInt(codEstudiante));
+        estudiantes.setNomEstudiante(nomEstudiante);
+        estudiantes.setCodEscuela(Integer.parseInt(codEscuela));
         
         //Listando la informacion  
-        List<Estudiante> estudiantes =  dao.findAll();
-        request.setAttribute("Estudiantes ", estudiantes);
+        List<Estudiante> estudiante =  dao.findAll();
+        request.setAttribute("Estudiantes ", estudiante);
        
        
         //Redireccionando la informacion
