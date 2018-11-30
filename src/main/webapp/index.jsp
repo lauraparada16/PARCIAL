@@ -19,18 +19,19 @@ body {
 <body>
     <div align="center" style="margin-top: 50px;">
         <form action="CrunchifyServlet">
-           CodEstudiante:  <input type="text" name="CodEstudiante" size="20px"> <br>
-           NomEstudiante:  <input type="text" name="NomEstudiante" size="20px"> <br><br>
-           CodEscuela:  <input type="text" name="CodEscuela" size="20px"> <br>
+           SID:  <input type="text" name="Codigo" size="20px"> <br>
+           FIRST:  <input type="text" name="Nombre" size="20px"> <br><br>
+           LAST:  <input type="text" name="Apellido" size="20px"> <br>
+           EMAIL:  <input type="text" name="Correo" size="20px"> <br>
         <input type="submit" value="submit">
         </form>
      </div>
     <%
-       if( request.getAttribute("estudiante")!=null){
-          List<Estudiante> estudiante  = (List<Estudiante>)request.getAttribute("estudiante");
-           for (Estudiante estudiantes : estudiante) {
+       if( request.getAttribute("students")!=null){
+          List<Student> students  = (List<Student>)request.getAttribute("students");
+           for (Student student : students) {
          %>      
-         <h1> <%=estudiantes.getNomEstudiante()%> </h1><br/> 
+         <h1> <%=student.getFIRST()%> </h1><br/> 
          <%      
           }
        }

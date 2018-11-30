@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class CreateDataBase {
      public static void run(){
-          String sql = "CREATE TABLE Escuela(codEscuela integer, nombreEscuela varchar(250), PRIMARY KEY(codEscuela))";
+          String sql = "CREATE TABLE STUDENTS(SID integer, FIRSTN varchar(250), LASTN varchar(250), EMAIL varchar(250), PRIMARY KEY(SID))";
           Connection connection = null;
             try {
                 connection = Conexion.getConnection();
@@ -26,12 +26,12 @@ public class CreateDataBase {
                 stmt.executeUpdate(sql);
                 
             } catch (URISyntaxException ex) {
-                Logger.getLogger(EscuelaDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(StudentDAO.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
              Logger.getLogger(CreateDataBase.class.getName()).log(Level.SEVERE, null, ex);
          }
             
-          String sql1 = "CREATE TABLE Estudiante(codEstudiante integer PRIMARY KEY, nomEstudiante varchar(250), codEscuela integer,FOREIGN KEY (codEscuela) REFERENCES Escuela(codEscuela))";
+          String sql1 = "CREATE TABLE EXERCISES(CAT varchar(50), ENO integer, TOPIC varchar(250),MAXPT integer, PRIMARY KEY(CAD,ENO))";
 
             try {
                 connection = Conexion.getConnection();
@@ -39,45 +39,21 @@ public class CreateDataBase {
                 stmt.executeUpdate(sql1);
                 
             } catch (URISyntaxException ex) {
-                Logger.getLogger(EstudianteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ExercisesDAO.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
              Logger.getLogger(CreateDataBase.class.getName()).log(Level.SEVERE, null, ex);
          }
             
             
-           String sql2 = "CREATE TABLE Profesor(codProfesor integer PRIMARY KEY, nomProfe varchar(50), apeProfe varchar(50))";
+           String sql2 = "CREATE TABLE RESULTS(SID integer, CAT varchar(50), ENO integer, POINTS integer, FOREIGN KEY(SID) REFERENCES STUDENTS(SID), "
+                   + "FOREIGN KEY(CAT) REFERENCES EXERCISES(CAT), FOREIGN KEY(ENO) REFERENCES EXERCISES(ENO))";
             try {
                 connection = Conexion.getConnection();
                 Statement stmt = connection.createStatement();
                 stmt.executeUpdate(sql2);
                 
             } catch (URISyntaxException ex) {
-                Logger.getLogger(ProfesorDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-             Logger.getLogger(CreateDataBase.class.getName()).log(Level.SEVERE, null, ex);
-         }
-            
-          String sql3 = "CREATE TABLE Curso(codCurso integer, nomCurso varchar(250), codProfesor integer, FOREIGN KEY (codProfe) REFERENCES Profesor(codProfe))";
-            try {
-                connection = Conexion.getConnection();
-                Statement stmt = connection.createStatement();
-                stmt.executeUpdate(sql3);
-                
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(CursoDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-             Logger.getLogger(CreateDataBase.class.getName()).log(Level.SEVERE, null, ex);
-         }
-            
-            
-          String sql4 = "CREATE TABLE Registro(id integer PRIMARY KEY, codEstudiante integer, codCurso integer, semestre varchar(50), nota double)";
-            try {
-                connection = Conexion.getConnection();
-                Statement stmt = connection.createStatement();
-                stmt.executeUpdate(sql4);
-                
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(RegistroDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ResultsDAO.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
              Logger.getLogger(CreateDataBase.class.getName()).log(Level.SEVERE, null, ex);
          }
