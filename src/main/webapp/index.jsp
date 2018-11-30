@@ -25,13 +25,12 @@ body {
         <input type="submit" value="submit">
         </form>
      </div>
- 
     <%
        if( request.getAttribute("estudiante")!=null){
           List<Estudiante> estudiante  = (List<Estudiante>)request.getAttribute("estudiante");
-           for (Estudiante estudiante : estudiante) {
+           for (Estudiante estudiantes : estudiante) {
          %>      
-         <h1> <%=estudiante.getNomEstudiante()%> </h1><br/> 
+         <h1> <%=estudiantes.getNomEstudiante()%> </h1><br/> 
          <%      
           }
        }
