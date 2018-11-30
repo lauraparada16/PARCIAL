@@ -30,7 +30,7 @@ body {
           List<Estudiante> estudiante  = (List<Estudiante>)request.getAttribute("estudiante");
            for (Estudiante estudiantes : estudiante) {
          %>      
-         <h1> <%=estudiantes.getnomEstudiante()%> </h1><br/> 
+         <h1> <%=estudiantes.getNomEstudiante()%> </h1><br/> 
          <%      
           }
        }
