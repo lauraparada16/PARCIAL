@@ -1,8 +1,8 @@
 package com.crunchify.jsp.servlet;
  
 
-import DAO.EstudianteDAO;
-import VO.Estudiante;
+import edu.co.sergio.mundo.dao.EstudianteDAO;
+import edu.co.sergio.mundo.vo.Estudiante;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
